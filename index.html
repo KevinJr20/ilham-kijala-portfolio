@@ -59,17 +59,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 10px 20px;
             background-color: var(--header-bg);
             position: fixed;
             width: 100%;
             z-index: 10;
+            height: 50px;
         }
 
         header a {
             font-size: 1.5em;
             font-family: 'Playfair Display', serif;
-            margin-left: 20px;
+            margin-left: 10px;
             text-decoration: none;
             color: var(--link-color);
         }
@@ -78,10 +79,19 @@
             color: var(--accent-color);
         }
 
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            color: var(--link-color);
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
         nav {
             display: flex;
             align-items: center;
-            margin: 0 auto;
         }
 
         nav a {
@@ -95,21 +105,56 @@
             color: var(--accent-color);
         }
 
+        .nav-menu {
+            display: flex;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            width: 200px;
+            background-color: var(--nav-bg);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex-direction: column;
+        }
+
+        .dropdown.active {
+            display: flex;
+        }
+
+        .dropdown a {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1.2em;
+            text-align: center;
+            width: 100%;
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .dropdown a:hover {
+            color: var(--accent-color);
+        }
+
         .header-actions {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-right: 20px;
         }
 
         .get-in-touch {
             background-color: var(--accent-color);
             border: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             color: #fff;
             border-radius: 5px;
             cursor: pointer;
             font-weight: 700;
+            display: none;
         }
 
         .get-in-touch:hover {
@@ -122,12 +167,13 @@
             font-size: 1.5em;
             color: var(--link-color);
             cursor: pointer;
+            margin-right: 10px;
         }
 
         .hero {
             display: flex;
             flex-wrap: wrap;
-            padding: 40px;
+            padding: 70px 40px 40px;
             align-items: center;
             justify-content: center;
             background-color: var(--section-bg);
@@ -290,83 +336,62 @@
             font-size: 0.9em;
         }
 
-        @media (max-width: 1024px) {
-            .header-actions {
-                margin-right: 10px;
-            }
-
-            .hero img {
-                width: 250px;
-            }
-
-            .gallery-images img {
-                width: 250px;
-                height: 312.5px;
-                /* Maintain 4:5 ratio */
-            }
-
-            .assignment-types div {
-                width: 45%;
-            }
-        }
-
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 10px;
+            .menu-toggle {
+                display: block;
             }
-
-            header a {
-                font-size: 1.2em;
-                margin-left: 0;
+            .nav-menu {
+                display: none;
             }
-
-            nav {
-                margin: 5px 0;
+            .dropdown {
+                display: none;
             }
-
-            nav a {
-                font-size: 1em;
-                margin: 0 10px;
+            .dropdown.active {
+                display: flex;
             }
-
             .header-actions {
                 flex-direction: row;
                 gap: 5px;
+                margin-right: 0;
             }
-
             .get-in-touch {
-                padding: 8px 15px;
-                font-size: 0.9em;
+                display: none;
             }
-
             #theme-toggle {
                 font-size: 1.2em;
+                margin-right: 10px;
             }
-
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px;
+                height: 50px;
+            }
+            header a {
+                font-size: 1.2em;
+                margin-left: 10px;
+            }
+            .hero {
+                padding: 70px 20px 20px;
+            }
             .hero img {
                 width: 200px;
             }
-
             .intro {
                 font-size: 1.5em;
             }
-
             .assignment-types div {
                 width: 100%;
                 margin-bottom: 10px;
             }
-
             .gallery-images img {
                 width: 200px;
                 height: 250px;
                 /* Maintain 4:5 ratio */
             }
-
             .contact-icons {
                 gap: 1em;
             }
-
             .bio {
                 font-size: 0.9em;
             }
@@ -376,38 +401,38 @@
             header a {
                 font-size: 1em;
             }
-
-            nav a {
-                font-size: 0.8em;
-                margin: 0 5px;
+            .dropdown a {
+                font-size: 1em;
+                padding: 8px;
             }
-
-            .get-in-touch {
-                padding: 6px 10px;
-                font-size: 0.7em;
-            }
-
             #theme-toggle {
                 font-size: 1em;
             }
-
-            .header-actions {
-                flex-direction: column;
-                gap: 5px;
-            }
-
             .hero img {
                 width: 150px;
             }
-
             .gallery-images img {
                 width: 150px;
                 height: 187.5px;
                 /* Maintain 4:5 ratio */
             }
-
             .bio {
                 font-size: 0.8em;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-menu {
+                display: flex !important;
+            }
+            .menu-toggle {
+                display: none;
+            }
+            .dropdown {
+                display: none !important;
+            }
+            .get-in-touch {
+                display: block;
             }
         }
 
@@ -415,11 +440,9 @@
             0% {
                 background-position: center top;
             }
-
             50% {
                 background-position: center center;
             }
-
             100% {
                 background-position: center bottom;
             }
@@ -430,14 +453,22 @@
 <body>
     <header>
         <a href="https://instagram.com/_kijala_" target="_blank">Ilham Kijala</a>
-        <nav>
+        <div class="nav-menu">
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+            </nav>
+        </div>
+        <div class="header-actions">
+            <button class="menu-toggle">☰</button>
+            <button class="get-in-touch">Get in Touch</button>
+            <button id="theme-toggle">🌙</button>
+        </div>
+        <div class="dropdown">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#gallery">Gallery</a>
-        </nav>
-        <div class="header-actions">
-            <button class="get-in-touch">Get in Touch</button>
-            <button id="theme-toggle">🌙</button>
         </div>
     </header>
 
@@ -516,7 +547,6 @@
     </footer>
 
     <script>
-        
         // Theme toggle
         const toggleButton = document.getElementById('theme-toggle');
         const body = document.body;
@@ -539,6 +569,25 @@
         document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
             e.preventDefault();
             document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Toggle mobile menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const dropdown = document.querySelector('.dropdown');
+        menuToggle.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking a menu item or outside
+        document.addEventListener('click', (event) => {
+            if (!dropdown.contains(event.target) && event.target !== menuToggle) {
+                dropdown.classList.remove('active');
+            }
+        });
+        dropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                dropdown.classList.remove('active');
+            });
         });
 
         // Schema markup for SEO
